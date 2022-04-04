@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "the-baby",
+    "slug": "the-baby",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
