@@ -5,7 +5,6 @@ import QuickStopStart from "../components/Fab";
 import { GlobalContext, NapContext } from "../context/GlobalContext";
 import React, { useContext } from "react";
 import MainMenu from "../components/MainMenu";
-import { LinearGradient } from "expo-linear-gradient";
 
 export default function Home() {
   const [data] = useContext(GlobalContext);
@@ -17,7 +16,7 @@ export default function Home() {
       contentContainerStyle={styles.container}
     >
       <StatusBar barStyle="dark-content" />
-      <ButtonGrid baby={data.baby} />
+      <ButtonGrid baby={data.babies[0]} />
       {napIsActive && <QuickStopStart />}
       <MainMenu />
     </ScrollView>

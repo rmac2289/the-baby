@@ -1,0 +1,107 @@
+{
+  "_id": { "$oid": "624b366e1b6fc2c6649d34b7" },
+  "userId": "5b6c8f8f1b6fc2c6649d34b6",
+  "username": "rmac2289",
+  "email": "rmac2289@gmail.com",
+  "password": "secret",
+  "babies": [
+    {
+      "name": "Danny",
+      "dob": "01/29/22",
+      "gender": "Male",
+      "imgUrl": "https://res.cloudinary.com/de36vblcl/image/upload/v1649096082/The-Baby/danny.jpg",
+      "development": {
+        "height": [
+          {
+            "inches": 20.0,
+            "date": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)"
+          },
+          {
+            "inches": 24.25,
+            "date": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)"
+          }
+        ],
+        "weight": [
+          {
+            "date": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+            "lbs": 8,
+            "oz": 2.0
+          },
+          {
+            "date": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+            "lbs": 14,
+            "oz": 1.5
+          }
+        ],
+        "headSize": [
+          {
+            "date": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+            "inches": 17,
+            "cms": 40
+          }
+        ]
+      },
+      "activities": {
+        "diapers": [
+          {
+            "diaperId": 11111,
+            "date": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+            "wet": true,
+            "dirty": true
+          }
+        ],
+        "medications": [
+          {
+            "medicationId": 11111,
+            "name": "",
+            "ml": 1.0,
+            "oz": 1.0,
+            "date": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)"
+          }
+        ],
+        "bottles": [
+          {
+            "bottleId": 11111,
+            "oz": 1.0,
+            "ml": 1.0,
+            "time": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)"
+          }
+        ],
+        "napping": {
+          "isNapping": false,
+          "allNaps": [
+            {
+              "napId": 11111,
+              "startTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+              "pauseTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+              "endTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)"
+            }
+          ]
+        },
+        "breastfeeding": {
+          "isBreastfeeding": false,
+          "allBreastfeeds": [
+            {
+              "breastFeedId": 11111,
+              "left": {
+                "startTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+                "pauseTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+                "endTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)"
+              },
+              "right": {
+                "startTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+                "pauseTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)",
+                "endTime": "Tue Apr 05 2022 15:07:22 GMT-0700 (Pacific Daylight Time)"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caregivers": [
+    { "name": "Nicole", "email": "nicolesd26@gmail.com", "canEdit": true },
+    { "name": "Ross", "email": "rmac2289@gmail.com", "canEdit": true }
+  ],
+  "preferences": { "darkMode": false }
+}

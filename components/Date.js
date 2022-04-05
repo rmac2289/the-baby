@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import React from "react";
 import { Badge, Box, Text, Pressable } from "native-base";
 import { formatDate } from "../utils/helperFunctions";
-import DatePicker from "./DatePicker";
 
 export default function TodaysDate() {
   let date = new Date();

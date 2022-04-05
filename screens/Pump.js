@@ -1,5 +1,5 @@
 import React from "react";
-import { HStack, VStack, Center, Box } from "native-base";
+import { VStack, Box } from "native-base";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function Pump() {

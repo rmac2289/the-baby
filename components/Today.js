@@ -17,9 +17,9 @@ export default function Today() {
         rounded="md"
       >
         <Text style={styles.date}>
-          {data.baby.name} is{" "}
+          {data.babies[0].name} is{" "}
           <Text textDecorationLine="underline">
-            {calculateAgeInWeeks(data.baby.bday)} weeks
+            {calculateAgeInWeeks(data.babies[0].dob)} weeks
           </Text>{" "}
           old
         </Text>

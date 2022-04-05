@@ -1,23 +1,16 @@
 import React, { createContext, useState, useEffect } from "react";
-
+import fakeData from "../fakeData.json";
 export const GlobalContext = createContext();
 export const AuthContext = createContext();
 export const NapContext = createContext();
 export const NapTimerContext = createContext();
 
 export const GlobalContextProvider = (props) => {
-  const [data, setData] = useState({
-    baby: {
-      name: "Danny",
-      bday: "01/29/2022",
-      isSleeping: false,
-      isEating: false,
-    },
-  });
+  const [data, setData] = useState(fakeData);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   const [napIsActive, setNapIsActive] = useState(false);
   const [seconds, setSeconds] = useState(0);
+
   useEffect(() => {
     let interval = null;
     if (napIsActive) {
@@ -29,6 +22,7 @@ export const GlobalContextProvider = (props) => {
     }
     return () => clearInterval(interval);
   }, [napIsActive, seconds]);
+
   return (
     <AuthContext.Provider value={[isAuthenticated, setIsAuthenticated]}>
       <GlobalContext.Provider value={[data, setData]}>
