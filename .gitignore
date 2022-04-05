@@ -1,7 +1,6 @@
 # OSX
 #
 .DS_Store
-
 # Xcode
 #
 build/
@@ -53,3 +52,5 @@ buck-out/
 .expo/
 web-build/
 dist/
+
+fakeData.json
