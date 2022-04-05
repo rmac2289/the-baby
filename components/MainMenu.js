@@ -21,8 +21,17 @@ import React from "react";
 export default function MainMenu() {
   const { isOpen, onOpen, onClose } = useDisclose();
   return (
-    <Center>
-      <Button size="lg" bg="indigo.900" onPress={onOpen}>
+    <Center w="50%" position="absolute" left={3} bottom={3}>
+      <Button
+        shadow={6}
+        rounded={10}
+        size="lg"
+        alignSelf="flex-start"
+        bg="indigo.900"
+        onPress={onOpen}
+        borderColor="white"
+        borderWidth={2}
+      >
         Menu
       </Button>
       <Actionsheet isOpen={isOpen} onClose={onClose}>

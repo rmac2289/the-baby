@@ -5,14 +5,15 @@ import QuickStopStart from "../components/Fab";
 import { GlobalContext, NapContext } from "../context/GlobalContext";
 import React, { useContext } from "react";
 import MainMenu from "../components/MainMenu";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Home() {
   const [data] = useContext(GlobalContext);
   const [napIsActive] = useContext(NapContext);
   return (
     <ScrollView
+      bg="#eef2ff"
       position="relative"
-      bg="indigo.50"
       contentContainerStyle={styles.container}
     >
       <StatusBar barStyle="dark-content" />

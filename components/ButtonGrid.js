@@ -8,12 +8,13 @@ import {
 } from "@expo/vector-icons";
 import Today from "./Today";
 import { useNavigation } from "@react-navigation/native";
+import HomeImage from "./HomeImage";
 
 export default function ButtonGrid({ baby }) {
   const navigation = useNavigation();
   return (
     <View style={styles.parentContainer}>
-      <Box shadow={6} rounded="md" style={styles.container}>
+      <Box shadow={6} style={styles.container}>
         <VStack
           bg="indigo.50"
           rounded="md"
@@ -21,6 +22,10 @@ export default function ButtonGrid({ baby }) {
           style={styles.stackContainer}
           space={3}
         >
+          <HStack justifyContent="center">
+            <HomeImage />
+            <Today baby={baby} />
+          </HStack>
           <HStack space={3} justifyContent="center">
             <VStack space={3}>
               <Pressable onPress={() => navigation.navigate("Bottle")}>
@@ -33,7 +38,7 @@ export default function ButtonGrid({ baby }) {
                 </Center>
               </Pressable>
               <Pressable onPress={() => navigation.navigate("Diaper")}>
-                <Center w="75" h="75" bg="indigo.800" rounded="md" shadow={6}>
+                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
                   <MaterialIcons
                     name="baby-changing-station"
                     size={36}
@@ -53,7 +58,7 @@ export default function ButtonGrid({ baby }) {
                 </Center>
               </Pressable>
               <Pressable onPress={() => navigation.navigate("Medicine")}>
-                <Center w="75" h="75" bg="indigo.800" rounded="md" shadow={6}>
+                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
                   <Fontisto name="pills" size={36} color="white" />
                 </Center>
               </Pressable>
@@ -65,14 +70,13 @@ export default function ButtonGrid({ baby }) {
                 </Center>
               </Pressable>
               <Pressable onPress={() => navigation.navigate("Breastfeed")}>
-                <Center w="75" h="75" bg="indigo.900" rounded="md" shadow={6}>
+                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
                   <Text style={{ color: "white" }}>Feed </Text>
                 </Center>
               </Pressable>
             </VStack>
           </HStack>
         </VStack>
-        <Today baby={baby} />
       </Box>
     </View>
   );
@@ -84,8 +88,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   container: {
-    width: "90%",
-    justifyContent: "space-between",
+    width: "100%",
     alignItems: "center",
     height: "85%",
     backgroundColor: "#312e81",
@@ -93,8 +96,6 @@ const styles = StyleSheet.create({
   },
   parentContainer: {
     width: "100%",
-    alignItems: "center",
-    justifyContent: "space-between",
     marginTop: 10,
   },
 });

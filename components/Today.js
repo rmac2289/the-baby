@@ -1,16 +1,27 @@
 import { Center } from "native-base";
 import React, { useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "native-base";
 import { calculateAgeInWeeks } from "../utils/helperFunctions";
 import { GlobalContext } from "../context/GlobalContext";
 
 export default function Today() {
   const [data] = useContext(GlobalContext);
   return (
-    <View style={styles.container}>
-      <Center rounded={"xl"} bg={"indigo.50"} shadow="5">
+    <View>
+      <Center
+        style={{ transform: [{ rotate: "5deg" }] }}
+        size="xl"
+        bg="indigo.700"
+        shadow={6}
+        rounded="md"
+      >
         <Text style={styles.date}>
-          {data.baby.name} is {calculateAgeInWeeks(data.baby.bday)} weeks old!
+          {data.baby.name} is{" "}
+          <Text textDecorationLine="underline">
+            {calculateAgeInWeeks(data.baby.bday)} weeks
+          </Text>{" "}
+          old
         </Text>
       </Center>
     </View>
@@ -20,12 +31,9 @@ export default function Today() {
 const styles = StyleSheet.create({
   date: {
     fontSize: 24,
-    color: "#312e81",
+    color: "#eef2ff",
     padding: 10,
     fontWeight: "500",
-  },
-  container: {
-    width: "90%",
-    margin: 10,
+    lineHeight: 30,
   },
 });
