@@ -1,5 +1,5 @@
 import React from "react";
-import { HStack, VStack, Center, Box, Pressable } from "native-base";
+import { HStack, VStack, Center, Box, Pressable, Image } from "native-base";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import {
   MaterialCommunityIcons,
@@ -12,6 +12,35 @@ import HomeImage from "./HomeImage";
 import Date from "./Date";
 import { LinearGradient } from "expo-linear-gradient";
 import { indigo } from "../utils/cssVars";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faPersonBreastfeeding } from "@fortawesome/free-solid-svg-icons";
+
+const icons = [
+  {
+    route: "Bottle",
+    uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/bottle.png",
+  },
+  {
+    route: "Diaper",
+    uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/diaper.png",
+  },
+  {
+    route: "Breastfeed",
+    uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/breastfeeding.png",
+  },
+  {
+    route: "Sleep",
+    uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/crib.png",
+  },
+  {
+    route: "Medicine",
+    uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/medicine.png",
+  },
+  {
+    route: "Pump",
+    uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/pump.png",
+  },
+];
 
 export default function ButtonGrid({ baby }) {
   const navigation = useNavigation();
@@ -34,86 +63,33 @@ export default function ButtonGrid({ baby }) {
         <Date />
       </HStack>
       <Box shadow={6} style={styles.container}>
-        <Pressable
-          style={styles.button}
-          onPress={() => navigation.navigate("Bottle")}
-          bg="indigo.700"
-          shadow={6}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Center>
-            <MaterialCommunityIcons
-              name="baby-bottle-outline"
-              size={36}
-              color="white"
-            />
-          </Center>
-        </Pressable>
-        <Pressable
-          style={styles.button}
-          onPress={() => navigation.navigate("Sleep")}
-          bg="indigo.700"
-          shadow={6}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Center>
-            <MaterialCommunityIcons name="sleep" size={36} color="white" />
-          </Center>
-        </Pressable>
-        <Pressable
-          bg="indigo.700"
-          shadow={6}
-          justifyContent="center"
-          alignItems="center"
-          style={styles.button}
-          onPress={() => navigation.navigate("Medicine")}
-        >
-          <Center>
-            <Fontisto name="pills" size={36} color="white" />
-          </Center>
-        </Pressable>
-        <Pressable
-          style={styles.button}
-          onPress={() => navigation.navigate("Pump")}
-          bg="indigo.700"
-          shadow={6}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Center>
-            <Text style={{ color: "white" }}>Pump</Text>
-          </Center>
-        </Pressable>
-        <Pressable
-          style={styles.button}
-          onPress={() => navigation.navigate("Breastfeed")}
-          bg="indigo.700"
-          shadow={6}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Center>
-            <Text style={{ color: "white" }}>Feed </Text>
-          </Center>
-        </Pressable>
-        <Pressable
-          style={styles.button}
-          onPress={() => navigation.navigate("Diaper")}
-          bg="indigo.700"
-          shadow={6}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Center>
-            <MaterialIcons
-              name="baby-changing-station"
-              size={36}
-              color="white"
-            />
-          </Center>
-        </Pressable>
+        {icons.map((icon, index) => {
+          return (
+            <Pressable
+              style={styles.button}
+              onPress={() => navigation.navigate(icon.route)}
+              bg="indigo.700"
+              shadow={6}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Center>
+                <Image
+                  source={{
+                    uri: icon.uri,
+                  }}
+                  alt={icon.route}
+                  size="xs"
+                  style={
+                    icon.route === "Bottle" && {
+                      transform: [{ rotate: "-20deg" }],
+                    }
+                  }
+                />
+              </Center>
+            </Pressable>
+          );
+        })}
         <Pressable
           style={styles.button}
           bg="emerald.700"
@@ -122,7 +98,7 @@ export default function ButtonGrid({ baby }) {
           alignItems="center"
         >
           <Center style={styles.addButtonContent}>
-            <AntDesign name="plussquare" size={36} color="white" />
+            <AntDesign name="plussquare" size={40} color="white" />
             {/* <Text style={styles.addButtonText}>Add Activity</Text> */}
           </Center>
         </Pressable>
