@@ -1,20 +1,32 @@
 import React from "react";
-import { HStack, VStack, Center, Box } from "native-base";
-import { StyleSheet, Text, View } from "react-native";
+import { VStack, Box, Text } from "native-base";
+import { StyleSheet, View } from "react-native";
+import Icon from "../components/Icon";
 
-export default function Diaper() {
+export default function Bottle({ uri, route }, { children }) {
   return (
     <Box bg="indigo.50" style={styles.box}>
       <View style={styles.parentContainer}>
-        <Box shadow={6} rounded="md" style={styles.container}>
+        <Box position="relative" shadow={6} style={styles.container}>
+          <Icon
+            position="absolute"
+            top={3}
+            left={3}
+            style={route === "Bottle" && { transform: [{ rotate: "-20deg" }] }}
+            uri={uri}
+            route={route}
+          />
+
           <VStack
-            bg="indigo.50"
             rounded="md"
             shadow={6}
             style={styles.stackContainer}
             space={6}
           >
-            <Text>Diaper</Text>
+            <Text fontSize={24} color="indigo.50">
+              {route}
+            </Text>
+            {children}
           </VStack>
         </Box>
       </View>
@@ -24,8 +36,7 @@ export default function Diaper() {
 
 const styles = StyleSheet.create({
   stackContainer: {
-    padding: 15,
-    margin: 10,
+    margin: 5,
   },
   box: {
     flex: 1,
@@ -33,7 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   container: {
-    width: "90%",
+    width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
     height: "85%",

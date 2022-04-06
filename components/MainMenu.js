@@ -15,18 +15,18 @@ import {
 } from "@expo/vector-icons";
 import { View } from "react-native";
 import React from "react";
-import { indigo } from "../utils/cssVars";
+import { headerColor, indigo } from "../utils/cssVars";
 
 export default function MainMenu() {
   const { isOpen, onOpen, onClose } = useDisclose();
   return (
-    <Center w="50%" position="absolute" left={3} bottom={3}>
+    <Center w="50%" position="absolute" left={0} bottom={0}>
       <Button
         shadow={6}
         rounded="sm"
         size="lg"
         alignSelf="flex-start"
-        bg="#c2410c"
+        bg={headerColor.primary}
         onPress={onOpen}
         borderColor={indigo[50]}
         borderWidth={1}

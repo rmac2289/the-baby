@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button } from "native-base";
 import { formatTime } from "../utils/helperFunctions";
 import { NapContext, NapTimerContext } from "../context/GlobalContext";
-
+import Icon from "../components/Icon";
 export default function Sleep() {
   const [napIsActive, setNapIsActive] = useContext(NapContext);
   const [seconds, setSeconds] = useContext(NapTimerContext);
@@ -21,7 +21,19 @@ export default function Sleep() {
   return (
     <Box bg="indigo.50" style={styles.box}>
       <View style={styles.parentContainer}>
-        <Box shadow={6} rounded="md" style={styles.container}>
+        <Box
+          position="relative"
+          shadow={6}
+          rounded="md"
+          style={styles.container}
+        >
+          <Icon
+            position="absolute"
+            bottom={3}
+            left={3}
+            uri="https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/crib.png"
+            route="Sleep"
+          />
           <HStack
             bg="indigo.50"
             rounded="md"

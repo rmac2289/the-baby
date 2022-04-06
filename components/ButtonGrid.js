@@ -1,19 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { HStack, VStack, Center, Box, Pressable, Image } from "native-base";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import {
-  MaterialCommunityIcons,
-  MaterialIcons,
-  Fontisto,
-  AntDesign,
-} from "@expo/vector-icons";
+import Icon from "./Icon";
 import { useNavigation } from "@react-navigation/native";
 import HomeImage from "./HomeImage";
 import Date from "./Date";
 import { LinearGradient } from "expo-linear-gradient";
 import { indigo } from "../utils/cssVars";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faPersonBreastfeeding } from "@fortawesome/free-solid-svg-icons";
+import AddActivityModal from "./AddActivityModal";
 
 const icons = [
   {
@@ -43,6 +37,8 @@ const icons = [
 ];
 
 export default function ButtonGrid({ baby }) {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const navigation = useNavigation();
   return (
     <View style={styles.parentContainer}>
@@ -66,6 +62,7 @@ export default function ButtonGrid({ baby }) {
         {icons.map((icon, index) => {
           return (
             <Pressable
+              key={icon.route}
               style={styles.button}
               onPress={() => navigation.navigate(icon.route)}
               bg="indigo.700"
@@ -74,23 +71,13 @@ export default function ButtonGrid({ baby }) {
               alignItems="center"
             >
               <Center>
-                <Image
-                  source={{
-                    uri: icon.uri,
-                  }}
-                  alt={icon.route}
-                  size="xs"
-                  style={
-                    icon.route === "Bottle" && {
-                      transform: [{ rotate: "-20deg" }],
-                    }
-                  }
-                />
+                <Icon uri={icon.uri} route={icon.route} />
               </Center>
             </Pressable>
           );
         })}
         <Pressable
+          onPress={() => setModalVisible(true)}
           style={styles.button}
           bg="emerald.700"
           shadow={6}
@@ -98,11 +85,20 @@ export default function ButtonGrid({ baby }) {
           alignItems="center"
         >
           <Center style={styles.addButtonContent}>
-            <AntDesign name="plussquare" size={40} color="white" />
-            {/* <Text style={styles.addButtonText}>Add Activity</Text> */}
+            <Image
+              source={{
+                uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/plus.png",
+              }}
+              alt="plus sign"
+              size="xs"
+            />
           </Center>
         </Pressable>
       </Box>
+      <AddActivityModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </View>
   );
 }

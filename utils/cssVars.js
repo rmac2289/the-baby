@@ -10,3 +10,10 @@ export const indigo = {
   800: "#3730a3",
   900: "#312e81",
 };
+export const emerald = {
+  700: "#047857",
+};
+
+export const headerColor = {
+  primary: "#c2410c",
+};

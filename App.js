@@ -3,14 +3,16 @@ import { Text } from "native-base";
 import AuthPrompt from "./screens/AuthPrompt";
 import Home from "./screens/Home";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Bottle from "./screens/Bottle";
-import Breastfeed from "./screens/Breastfeed";
-import Pump from "./screens/Pump";
+import {
+  Diaper,
+  Medicine,
+  Pump,
+  Breastfeed,
+  Bottle,
+} from "./screens/ActivityScreens";
 import Sleep from "./screens/Sleep";
-import Medicine from "./screens/Medicine";
-import Diaper from "./screens/Diaper";
 import { GlobalContext } from "./context/GlobalContext";
-import { indigo } from "./utils/cssVars";
+import { indigo, headerColor } from "./utils/cssVars";
 import * as Font from "expo-font";
 const Stack = createNativeStackNavigator();
 
@@ -45,7 +47,7 @@ export default function App() {
           fontFamily: "Fredoka_One",
           fontSize: 32,
           paddingTop: 15,
-          color: "#c2410c",
+          color: headerColor.primary,
         }}
       >
         {data.babies[0].name}
