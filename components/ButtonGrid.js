@@ -1,101 +1,164 @@
 import React from "react";
-import { HStack, VStack, Center, Box } from "native-base";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { HStack, VStack, Center, Box, Pressable } from "native-base";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import {
   MaterialCommunityIcons,
   MaterialIcons,
   Fontisto,
+  AntDesign,
 } from "@expo/vector-icons";
-import Today from "./Today";
 import { useNavigation } from "@react-navigation/native";
 import HomeImage from "./HomeImage";
+import Date from "./Date";
+import { LinearGradient } from "expo-linear-gradient";
+import { indigo } from "../utils/cssVars";
 
 export default function ButtonGrid({ baby }) {
   const navigation = useNavigation();
   return (
     <View style={styles.parentContainer}>
+      <LinearGradient
+        colors={[indigo[50], indigo[900]]}
+        locations={[0.3, 0.35]}
+        style={styles.background}
+      />
+      <HStack
+        shadow={4}
+        bg="transparent"
+        padding={4}
+        flexDir="row"
+        justifyContent="space-between"
+        w="100%"
+      >
+        <HomeImage />
+        <Date />
+      </HStack>
       <Box shadow={6} style={styles.container}>
-        <VStack
-          bg="indigo.50"
-          rounded="md"
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Bottle")}
+          bg="indigo.700"
           shadow={6}
-          style={styles.stackContainer}
-          space={3}
+          justifyContent="center"
+          alignItems="center"
         >
-          <HStack justifyContent="center">
-            <HomeImage />
-            <Today baby={baby} />
-          </HStack>
-          <HStack space={3} justifyContent="center">
-            <VStack space={3}>
-              <Pressable onPress={() => navigation.navigate("Bottle")}>
-                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
-                  <MaterialCommunityIcons
-                    name="baby-bottle-outline"
-                    size={36}
-                    color="white"
-                  />
-                </Center>
-              </Pressable>
-              <Pressable onPress={() => navigation.navigate("Diaper")}>
-                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
-                  <MaterialIcons
-                    name="baby-changing-station"
-                    size={36}
-                    color="white"
-                  />
-                </Center>
-              </Pressable>
-            </VStack>
-            <VStack space={3}>
-              <Pressable onPress={() => navigation.navigate("Sleep")}>
-                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
-                  <MaterialCommunityIcons
-                    name="sleep"
-                    size={36}
-                    color="white"
-                  />
-                </Center>
-              </Pressable>
-              <Pressable onPress={() => navigation.navigate("Medicine")}>
-                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
-                  <Fontisto name="pills" size={36} color="white" />
-                </Center>
-              </Pressable>
-            </VStack>
-            <VStack space={3}>
-              <Pressable onPress={() => navigation.navigate("Pump")}>
-                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
-                  <Text style={{ color: "white" }}>Pump</Text>
-                </Center>
-              </Pressable>
-              <Pressable onPress={() => navigation.navigate("Breastfeed")}>
-                <Center w="75" h="75" bg="indigo.700" rounded="md" shadow={6}>
-                  <Text style={{ color: "white" }}>Feed </Text>
-                </Center>
-              </Pressable>
-            </VStack>
-          </HStack>
-        </VStack>
+          <Center>
+            <MaterialCommunityIcons
+              name="baby-bottle-outline"
+              size={36}
+              color="white"
+            />
+          </Center>
+        </Pressable>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Sleep")}
+          bg="indigo.700"
+          shadow={6}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Center>
+            <MaterialCommunityIcons name="sleep" size={36} color="white" />
+          </Center>
+        </Pressable>
+        <Pressable
+          bg="indigo.700"
+          shadow={6}
+          justifyContent="center"
+          alignItems="center"
+          style={styles.button}
+          onPress={() => navigation.navigate("Medicine")}
+        >
+          <Center>
+            <Fontisto name="pills" size={36} color="white" />
+          </Center>
+        </Pressable>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Pump")}
+          bg="indigo.700"
+          shadow={6}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Center>
+            <Text style={{ color: "white" }}>Pump</Text>
+          </Center>
+        </Pressable>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Breastfeed")}
+          bg="indigo.700"
+          shadow={6}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Center>
+            <Text style={{ color: "white" }}>Feed </Text>
+          </Center>
+        </Pressable>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Diaper")}
+          bg="indigo.700"
+          shadow={6}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Center>
+            <MaterialIcons
+              name="baby-changing-station"
+              size={36}
+              color="white"
+            />
+          </Center>
+        </Pressable>
+        <Pressable
+          style={styles.button}
+          bg="emerald.700"
+          shadow={6}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Center style={styles.addButtonContent}>
+            <AntDesign name="plussquare" size={36} color="white" />
+            {/* <Text style={styles.addButtonText}>Add Activity</Text> */}
+          </Center>
+        </Pressable>
       </Box>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  stackContainer: {
-    padding: 15,
-    margin: 10,
-  },
   container: {
     width: "100%",
-    alignItems: "center",
-    height: "85%",
-    backgroundColor: "#312e81",
-    padding: 10,
+    height: "100%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    margin: 5,
   },
   parentContainer: {
     width: "100%",
-    marginTop: 10,
+    alignItems: "center",
+  },
+  button: {
+    width: Dimensions.get("window").width / 3 - 2,
+    height: Dimensions.get("window").width / 3 - 30,
+    margin: 1,
+    borderRadius: 5,
+  },
+  addButtonContent: {
+    alignItems: "center",
+  },
+  addButtonText: {
+    color: indigo[50],
+    padding: 2,
+  },
+  background: {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
   },
 });

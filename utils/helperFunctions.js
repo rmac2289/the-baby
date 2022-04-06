@@ -6,6 +6,21 @@ export const calculateAgeInWeeks = (bday) => {
   return ageInWeeks;
 };
 
+export const getDayOfWeek = (date) => {
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  const day = date.getDay();
+  return dayNames[day];
+};
+
 export const formatDate = (date) => {
   const monthNames = [
     "January",
@@ -24,7 +39,8 @@ export const formatDate = (date) => {
   const day = date.getDate();
   const monthIndex = date.getMonth();
   const year = date.getFullYear();
-  return `${monthNames[monthIndex]} ${day}, ${year}`;
+  const dayOfWeek = getDayOfWeek(date);
+  return `${dayOfWeek}, ${monthNames[monthIndex]} ${day}, ${year}`;
 };
 
 export const formatTime = (seconds) => {

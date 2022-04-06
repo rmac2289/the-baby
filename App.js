@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { Text } from "native-base";
 import AuthPrompt from "./screens/AuthPrompt";
 import Home from "./screens/Home";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -9,23 +10,49 @@ import Sleep from "./screens/Sleep";
 import Medicine from "./screens/Medicine";
 import Diaper from "./screens/Diaper";
 import { GlobalContext } from "./context/GlobalContext";
-import TodaysDate from "./components/Date";
+import { indigo } from "./utils/cssVars";
+import * as Font from "expo-font";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [isAuthenticated] = useContext(GlobalContext);
+  const [fontLoaded, setFontLoaded] = useState(true);
+  const loadFonts = async () => {
+    await Font.loadAsync({
+      // Load a font `Montserrat` from a static resource
+      Chelsea_Market: require("./assets/fonts/Chelsea_Market/ChelseaMarket-Regular.ttf"),
+      Fredoka_One: require("./assets/fonts/Fredoka_One/FredokaOne-Regular.ttf"),
+      Sniglet: require("./assets/fonts/Sniglet/Sniglet-Regular.ttf"),
+    });
+    setFontLoaded(true);
+  };
+  useEffect(() => {
+    loadFonts();
+  });
+  const [data, isAuthenticated] = useContext(GlobalContext);
   const options = {
     headerStyle: {
-      backgroundColor: "#eef2ff",
+      backgroundColor: indigo[50],
     },
     headerTitleStyle: {
-      color: "#312e81",
+      color: indigo[900],
+      fontSize: 24,
     },
     headerShadowVisible: false,
     animation: "simple_push",
-    headerTitle: () => <TodaysDate />,
+    headerTitle: () => (
+      <Text
+        style={{
+          fontFamily: "Fredoka_One",
+          fontSize: 32,
+          paddingTop: 15,
+          color: "#c2410c",
+        }}
+      >
+        {data.babies[0].name}
+      </Text>
+    ),
   };
-  return (
+  return fontLoaded ? (
     <Stack.Navigator screenOptions={options}>
       {!isAuthenticated ? (
         <Stack.Screen name="AuthPrompt" component={AuthPrompt} />
@@ -41,5 +68,5 @@ export default function App() {
         </>
       )}
     </Stack.Navigator>
-  );
+  ) : null;
 }

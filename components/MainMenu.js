@@ -7,8 +7,6 @@ import {
   Text,
   Divider,
   SmallCloseIcon,
-  QuestionIcon,
-  InfoIcon,
 } from "native-base";
 import {
   SimpleLineIcons,
@@ -17,6 +15,7 @@ import {
 } from "@expo/vector-icons";
 import { View } from "react-native";
 import React from "react";
+import { indigo } from "../utils/cssVars";
 
 export default function MainMenu() {
   const { isOpen, onOpen, onClose } = useDisclose();
@@ -24,13 +23,13 @@ export default function MainMenu() {
     <Center w="50%" position="absolute" left={3} bottom={3}>
       <Button
         shadow={6}
-        rounded={10}
+        rounded="sm"
         size="lg"
         alignSelf="flex-start"
-        bg="indigo.900"
+        bg="#c2410c"
         onPress={onOpen}
-        borderColor="white"
-        borderWidth={2}
+        borderColor={indigo[50]}
+        borderWidth={1}
       >
         Menu
       </Button>
