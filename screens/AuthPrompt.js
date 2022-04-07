@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { StyleSheet, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Title from "../components/Title";
 import { AuthContext } from "../context/GlobalContext";
+import { Text, Pressable } from "native-base";
 import AuthTest from "./AuthTest";
 export default function AuthPrompt() {
   const [isAuthenticated, setIsAuthenticated] = useContext(AuthContext);
@@ -12,6 +11,7 @@ export default function AuthPrompt() {
   };
   return (
     <View style={styles.container}>
+      <Text>Login or signup to get started</Text>
       <AuthTest
         isAuthenticated={isAuthenticated}
         authenticateUser={authenticateUser}

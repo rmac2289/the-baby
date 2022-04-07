@@ -13,7 +13,7 @@ export default function Home() {
   const [isAuthenticated] = useContext(AuthContext);
   const [data] = useContext(GlobalContext);
   const [napIsActive] = useContext(NapContext);
-  let EMPTY_TEST_ARRAY = [];
+  let EMPTY_TEST_ARRAY = [0];
   return !isAuthenticated ? (
     <AuthPrompt />
   ) : (
