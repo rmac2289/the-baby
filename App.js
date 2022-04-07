@@ -14,10 +14,11 @@ import Sleep from "./screens/Sleep";
 import { GlobalContext } from "./context/GlobalContext";
 import { indigo, headerColor } from "./utils/cssVars";
 import * as Font from "expo-font";
+import Title from "./components/Title";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [fontLoaded, setFontLoaded] = useState(true);
+  const [fontLoaded, setFontLoaded] = useState(false);
   const loadFonts = async () => {
     await Font.loadAsync({
       // Load a font `Montserrat` from a static resource
@@ -41,18 +42,7 @@ export default function App() {
     },
     headerShadowVisible: false,
     animation: "simple_push",
-    headerTitle: () => (
-      <Text
-        style={{
-          fontFamily: "Fredoka_One",
-          fontSize: 32,
-          paddingTop: 15,
-          color: headerColor.primary,
-        }}
-      >
-        {data.babies[0].name}
-      </Text>
-    ),
+    headerTitle: () => <Title data={data} />,
   };
   return fontLoaded ? (
     <Stack.Navigator screenOptions={options}>

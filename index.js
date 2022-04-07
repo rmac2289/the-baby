@@ -3,14 +3,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import App from "./App";
 import { GlobalContextProvider } from "./context/GlobalContext";
 import { NativeBaseProvider } from "native-base";
+import { SSRProvider } from "@react-aria/ssr";
 
 const AppRoot = () => {
   return (
     <NavigationContainer>
       <GlobalContextProvider>
-        <NativeBaseProvider>
-          <App />
-        </NativeBaseProvider>
+        <SSRProvider>
+          <NativeBaseProvider>
+            <App />
+          </NativeBaseProvider>
+        </SSRProvider>
       </GlobalContextProvider>
     </NavigationContainer>
   );

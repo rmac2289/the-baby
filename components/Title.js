@@ -1,24 +1,18 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useContext } from "react";
+import { Text } from "native-base";
+import { headerColor } from "../utils/cssVars";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>The Baby!</Text>
-    </View>
+    <Text
+      style={{
+        fontFamily: "Fredoka_One",
+        fontSize: 32,
+        paddingTop: 15,
+        color: headerColor.primary,
+      }}
+    >
+      {data.babies[0].name}
+    </Text>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#312e81",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  titleText: {
-    color: "#fff",
-    fontSize: 32,
-    fontWeight: "700",
-  },
-});
