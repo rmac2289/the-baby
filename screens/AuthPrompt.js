@@ -1,30 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Title from "../components/Title";
 import { AuthContext } from "../context/GlobalContext";
-
+import AuthTest from "./AuthTest";
 export default function AuthPrompt() {
-  const [setIsAuthenticated] = useContext(AuthContext);
+  const [isAuthenticated, setIsAuthenticated] = useContext(AuthContext);
   const authenticateUser = () => {
     setIsAuthenticated(true);
   };
   return (
     <View style={styles.container}>
-      <Title />
-      <Pressable style={styles.button} onPress={authenticateUser}>
-        <View style={styles.insideButton}>
-          <Ionicons
-            style={styles.icon}
-            name="logo-google"
-            size={32}
-            color="#2f0D44"
-          />
-          <Text style={styles.buttonText}>Login with Google</Text>
-        </View>
-      </Pressable>
-      <Pressable style={styles.button} onPress={authenticateUser}>
+      <AuthTest
+        isAuthenticated={isAuthenticated}
+        authenticateUser={authenticateUser}
+      />
+      <Pressable style={styles.button}>
         <View style={styles.insideButton}>
           <Ionicons
             style={styles.icon}

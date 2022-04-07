@@ -1,38 +1,44 @@
 import React, { useState } from "react";
-import { HStack, VStack, Center, Box, Pressable, Image } from "native-base";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { HStack, Text, Center, Box, Pressable, Image } from "native-base";
+import { StyleSheet, View, Dimensions } from "react-native";
 import Icon from "./Icon";
 import { useNavigation } from "@react-navigation/native";
 import HomeImage from "./HomeImage";
 import Date from "./Date";
 import { LinearGradient } from "expo-linear-gradient";
-import { indigo } from "../utils/cssVars";
+import { headerColor, indigo } from "../utils/cssVars";
 import AddActivityModal from "./AddActivityModal";
 
 const icons = [
   {
     route: "Bottle",
     uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/bottle.png",
+    bg: "indigo.600",
   },
   {
     route: "Diaper",
     uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/diaper.png",
+    bg: "indigo.600",
   },
   {
     route: "Breastfeed",
     uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/breastfeeding.png",
+    bg: "indigo.600",
   },
   {
     route: "Sleep",
     uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/crib.png",
+    bg: "indigo.600",
   },
   {
     route: "Medicine",
     uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/medicine.png",
+    bg: "indigo.600",
   },
   {
     route: "Pump",
     uri: "https://res.cloudinary.com/de36vblcl/image/upload/v1649276415/The-Baby/pump.png",
+    bg: "indigo.600",
   },
 ];
 
@@ -65,13 +71,18 @@ export default function ButtonGrid({ baby }) {
               key={icon.route}
               style={styles.button}
               onPress={() => navigation.navigate(icon.route)}
-              bg="indigo.700"
+              bg={icon.bg}
               shadow={6}
               justifyContent="center"
               alignItems="center"
+              rounded="full"
+              opacity={0.9}
             >
-              <Center>
+              <Center marginTop="1" h="100%" w="75" justifyContent="center">
                 <Icon uri={icon.uri} route={icon.route} />
+                <Text fontWeight="600" marginTop="1" color="indigo.50">
+                  {icon.route}
+                </Text>
               </Center>
             </Pressable>
           );

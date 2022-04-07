@@ -1,9 +1,16 @@
 PODS:
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - EXApplication (4.0.2):
     - ExpoModulesCore
   - EXConstants (13.0.2):
+    - ExpoModulesCore
+  - EXCrypto (10.1.2):
     - ExpoModulesCore
   - EXFileSystem (13.1.4):
     - ExpoModulesCore
@@ -18,9 +25,13 @@ PODS:
   - ExpoModulesCore (0.6.5):
     - React-Core
     - ReactCommon/turbomodule/core
+  - EXRandom (12.1.2):
+    - React-Core
   - EXSplashScreen (0.14.2):
     - ExpoModulesCore
     - React-Core
+  - EXWebBrowser (10.1.1):
+    - ExpoModulesCore
   - FBLazyVector (0.64.3)
   - FBReactNativeSpec (0.64.3):
     - RCT-Folly (= 2020.01.13.00)
@@ -223,6 +234,9 @@ PODS:
     - React-jsi (= 0.64.3)
     - React-perflogger (= 0.64.3)
   - React-jsinspector (0.64.3)
+  - react-native-app-auth (6.4.3):
+    - AppAuth (= 1.4.0)
+    - React-Core
   - react-native-safe-area-context (3.3.2):
     - React-Core
   - React-perflogger (0.64.3)
@@ -302,13 +316,16 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXCrypto (from `../node_modules/expo-crypto/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - Expo (from `../node_modules/expo/ios`)
   - ExpoLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core/ios`)
+  - EXRandom (from `../node_modules/expo-random/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
+  - EXWebBrowser (from `../node_modules/expo-web-browser/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -325,6 +342,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-app-auth (from `../node_modules/react-native-app-auth`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -345,6 +363,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppAuth
     - boost-for-react-native
 
 EXTERNAL SOURCES:
@@ -354,6 +373,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-application/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
+  EXCrypto:
+    :path: "../node_modules/expo-crypto/ios"
   EXFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   EXFont:
@@ -366,8 +387,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-linear-gradient/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core/ios"
+  EXRandom:
+    :path: "../node_modules/expo-random/ios"
   EXSplashScreen:
     :path: "../node_modules/expo-splash-screen/ios"
+  EXWebBrowser:
+    :path: "../node_modules/expo-web-browser/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -396,6 +421,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-app-auth:
+    :path: "../node_modules/react-native-app-auth"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-perflogger:
@@ -432,17 +459,21 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   EXApplication: 54fe5bd6268d697771645e8f1aef8b806a65247a
   EXConstants: 88bf79622fbd9b476c96d8ec57fe97ca44fe8e3c
+  EXCrypto: ab2ba0df3136a5f2407b8c7e70eb498ac20d704f
   EXFileSystem: 08a3033ac372b6346becf07839e1ccef26fb1058
   EXFont: 2597c10ac85a69d348d44d7873eccf5a7576ef5e
   EXKeepAwake: bf48d7f740a5cd2befed6cf9a49911d385c6c47d
   Expo: 534e51e607aba8229293297da5585f4b26f50fa1
   ExpoLinearGradient: fd591c223c81f6779036ed4cef4deb20ecb87c50
   ExpoModulesCore: 32c0ccb47f477d330ee93db72505380adf0de09a
+  EXRandom: 1d00fd04d7d874c0c9d1ff87cee59ffe0b638a3d
   EXSplashScreen: 21669e598804ee810547dbb6692c8deb5dd8dbf3
+  EXWebBrowser: f1573262c5de753987ed526c630076eda130804d
   FBLazyVector: c71c5917ec0ad2de41d5d06a5855f6d5eda06971
   FBReactNativeSpec: 7db293439b4a0d37e603de29c4a94b6068976c81
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
@@ -457,6 +488,7 @@ SPEC CHECKSUMS:
   React-jsi: a8b09c29521c798f1783348b37b511ba7b3dbeb3
   React-jsiexecutor: df6abc9fafbecb8e5b7a5fbc5e6d4bd017d594d5
   React-jsinspector: 34e23860273a23695342f58eed3ffd3ba10c31e0
+  react-native-app-auth: fd1eaa667c0bc014199456d14a6440cb74de814e
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   React-perflogger: cc76a4254d19640f1d8ad1c66fdee800414b805c
   React-RCTActionSheet: 7448f049318d8d7e8a9a1ebb742ada721757eea8
