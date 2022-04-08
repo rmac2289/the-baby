@@ -9,14 +9,12 @@ import { indigo } from "../utils/cssVars";
 import { AuthContext } from "../context/GlobalContext";
 import AuthPrompt from "./AuthPrompt";
 import AddBaby from "./AddBaby";
+
 export default function Home() {
-  const [isAuthenticated] = useContext(AuthContext);
   const [data] = useContext(GlobalContext);
   const [napIsActive] = useContext(NapContext);
   let EMPTY_TEST_ARRAY = [0];
-  return !isAuthenticated ? (
-    <AuthPrompt />
-  ) : (
+  return (
     <ScrollView
       bg="indigo.900"
       position="relative"

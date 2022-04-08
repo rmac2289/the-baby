@@ -5,6 +5,8 @@ import { Button, Text } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet, View } from "react-native";
 import { AuthContext } from "../context/GlobalContext";
+import Icon from "../components/Icon";
+
 WebBrowser.maybeCompleteAuthSession();
 
 export default function AuthTest() {
@@ -31,20 +33,20 @@ export default function AuthTest() {
   return (
     <Button
       style={styles.button}
+      rounded="md"
       disabled={!request}
+      shadow={6}
       title="Login"
       onPress={() => {
         promptAsync();
       }}
     >
       <View style={styles.insideButton}>
-        <Ionicons
-          style={styles.icon}
-          name="logo-google"
-          size={32}
-          color="#2f0D44"
+        <Icon
+          route="google"
+          uri="https://res.cloudinary.com/de36vblcl/image/upload/v1649432332/The-Baby/google.png"
         />
-        <Text style={styles.buttonText}>Login with Google</Text>
+        <Text style={styles.buttonText}>Sign in with Google</Text>
       </View>
     </Button>
   );
@@ -58,26 +60,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   button: {
-    backgroundColor: "#fff",
-    width: "70%",
+    backgroundColor: "#FFF",
+    width: "100%",
     height: 50,
     padding: 10,
     justifyContent: "center",
-    alignItems: "flex-start",
+    alignItems: "center",
     margin: 10,
-    borderRadius: 50,
+    borderRadius: 5,
   },
   buttonText: {
-    color: "#2F0D44",
-    fontSize: 18,
+    color: "black",
+    fontSize: 17,
+    fontWeight: "500",
   },
   icon: {
-    marginRight: 20,
+    marginRight: 5,
   },
   insideButton: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    width: "90%",
+    width: "100%",
   },
 });

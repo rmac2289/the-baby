@@ -9,8 +9,9 @@ export default function Icon({ uri, route, position, top, left, bottom }) {
         source={{
           uri,
         }}
-        alt={route}
-        size="xs"
+        alt={route ? route : "icon"}
+        size={route === "google" ? 5 : "xs"}
+        marginRight={route === "google" ? 2 : 0}
         style={
           route === "Bottle" && {
             transform: [{ rotate: "-20deg" }],

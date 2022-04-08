@@ -12,7 +12,7 @@ import {
 } from "./screens/ActivityScreens";
 import AuthTest from "./screens/AuthTest";
 import Sleep from "./screens/Sleep";
-import { GlobalContext } from "./context/GlobalContext";
+import { GlobalContext, AuthContext } from "./context/GlobalContext";
 import { indigo, headerColor } from "./utils/cssVars";
 import * as Font from "expo-font";
 import Title from "./components/Title";
@@ -21,6 +21,9 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
+  const [data] = useContext(GlobalContext);
+  const [isAuthenticated] = useContext(AuthContext);
+
   const loadFonts = async () => {
     await Font.loadAsync({
       // Load a font `Montserrat` from a static resource
@@ -33,7 +36,6 @@ export default function App() {
   useEffect(() => {
     loadFonts();
   });
-  const [data, isAuthenticated] = useContext(GlobalContext);
   const options = {
     headerStyle: {
       backgroundColor: indigo[50],
@@ -46,18 +48,28 @@ export default function App() {
     animation: "simple_push",
     headerTitle: () => <Title data={data} />,
   };
+
   return fontLoaded ? (
     <Stack.Navigator screenOptions={options}>
-      <Stack.Screen name="Home" component={Home} />
-
-      <Stack.Screen name="AuthTest" component={AuthTest} />
-
-      <Stack.Screen name="Bottle" component={Bottle} />
-      <Stack.Screen name="Medicine" component={Medicine} />
-      <Stack.Screen name="Pump" component={Pump} />
-      <Stack.Screen name="Breastfeed" component={Breastfeed} />
-      <Stack.Screen name="Diaper" component={Diaper} />
-      <Stack.Screen name="Sleep" component={Sleep} />
+      {!isAuthenticated ? (
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="AuthPrompt"
+          component={AuthPrompt}
+        />
+      ) : (
+        <>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Bottle" component={Bottle} />
+          <Stack.Screen name="Medicine" component={Medicine} />
+          <Stack.Screen name="Pump" component={Pump} />
+          <Stack.Screen name="Breastfeed" component={Breastfeed} />
+          <Stack.Screen name="Diaper" component={Diaper} />
+          <Stack.Screen name="Sleep" component={Sleep} />
+        </>
+      )}
     </Stack.Navigator>
   ) : null;
 }
