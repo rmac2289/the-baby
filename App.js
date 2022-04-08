@@ -2,15 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import AuthPrompt from "./screens/AuthPrompt";
 import Home from "./screens/Home";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {
-  Diaper,
-  Medicine,
-  Pump,
-  Breastfeed,
-  Bottle,
-} from "./screens/ActivityScreens";
 import { CurrentScreen } from "./screens/ActivityScreens";
-import Sleep from "./screens/Sleep";
 import { GlobalContext, AuthContext } from "./context/GlobalContext";
 import { indigo } from "./utils/cssVars";
 import * as Font from "expo-font";
@@ -44,9 +36,8 @@ export default function App() {
       fontSize: 24,
     },
     headerShadowVisible: false,
-    animation: "simple_push",
+
     headerTitle: () => <Title data={data} />,
-    headerShown: false,
   };
 
   return fontLoaded ? (
@@ -61,13 +52,12 @@ export default function App() {
         />
       ) : (
         <>
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name="Activity" component={CurrentScreen} />
-          {/* <Stack.Screen name="Medicine" component={Medicine} />
-          <Stack.Screen name="Pump" component={Pump} />
-          <Stack.Screen name="Breastfeed" component={Breastfeed} />
-          <Stack.Screen name="Diaper" component={Diaper} />
-          <Stack.Screen name="Sleep" component={Sleep} /> */}
         </>
       )}
     </Stack.Navigator>
