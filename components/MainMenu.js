@@ -22,16 +22,16 @@ export default function MainMenu() {
   return (
     <Center w="50%" position="absolute" left={0} bottom={0}>
       <Button
+        h="55"
+        w="55"
         shadow={6}
-        rounded="sm"
-        size="lg"
+        rounded="full"
+        margin={2}
         alignSelf="flex-start"
-        bg={headerColor.primary}
+        bg="amber.700"
         onPress={onOpen}
-        borderColor={indigo[50]}
-        borderWidth={1}
       >
-        Menu
+        <SimpleLineIcons name="settings" size={28} color="#eef2ff" />
       </Button>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
         <Actionsheet.Content bg="indigo.900">
@@ -79,7 +79,18 @@ export default function MainMenu() {
               </Text>
             </View>
           </Actionsheet.Item>
-
+          <Actionsheet.Item>
+            <View style={{ flexDirection: "row" }}>
+              <MaterialCommunityIcons
+                name="help-circle-outline"
+                size={24}
+                color="#eef2ff"
+              />
+              <Text marginLeft={5} fontSize={16} color="indigo.50">
+                Help
+              </Text>
+            </View>
+          </Actionsheet.Item>
           <Actionsheet.Item onPress={onClose}>
             <View style={{ flexDirection: "row" }}>
               <SmallCloseIcon color="indigo.50" size="sm" />

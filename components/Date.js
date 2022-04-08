@@ -11,30 +11,24 @@ export default function TodaysDate() {
   let today = formatDate(date);
   let fullDate = today.split(",");
   return (
-    <Box
-      flex={1.25}
-      bg="indigo.800"
-      style={{ transform: [{ rotate: "2deg" }] }}
-      rounded="sm"
-      shadow={6}
-    >
+    <Box flex={0.75} bg="indigo.900" rounded="sm" shadow={6}>
       <Pressable rounded="md">
-        <Badge p={2} alignItems="center" bg="indigo.800" rounded="md">
+        <Badge p={2} alignItems="center" bg="indigo.900" rounded="md">
           <VStack space={3}>
             <Box style={styles.dateView}>
               <AntDesign
                 style={styles.icon}
                 name="calendar"
-                size={16}
-                color={indigo[50]}
+                size={20}
+                color="white"
               />
-              <Text color="indigo.50" fontSize={20}>
+              <Text color="white" fontSize={20}>
                 {fullDate[0]}
               </Text>
-              <Text color="indigo.50" fontSize={20}>
+              <Text color="white" fontSize={20}>
                 {fullDate[1]}, {fullDate[2]}
               </Text>
-              <Divider thickness={1} bg="indigo.50" />
+              <Divider thickness={1} bg="white" />
             </Box>
 
             <Text style={styles.age}>
@@ -62,6 +56,6 @@ const styles = StyleSheet.create({
   icon: {
     position: "absolute",
     top: -3,
-    right: -24,
+    right: -38,
   },
 });

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Text } from "native-base";
 import AuthPrompt from "./screens/AuthPrompt";
 import Home from "./screens/Home";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -10,10 +9,9 @@ import {
   Breastfeed,
   Bottle,
 } from "./screens/ActivityScreens";
-import AuthTest from "./screens/AuthTest";
 import Sleep from "./screens/Sleep";
 import { GlobalContext, AuthContext } from "./context/GlobalContext";
-import { indigo, headerColor } from "./utils/cssVars";
+import { indigo } from "./utils/cssVars";
 import * as Font from "expo-font";
 import Title from "./components/Title";
 
@@ -45,6 +43,7 @@ export default function App() {
       fontSize: 24,
     },
     headerShadowVisible: false,
+    headerShown: false,
     animation: "simple_push",
     headerTitle: () => <Title data={data} />,
   };

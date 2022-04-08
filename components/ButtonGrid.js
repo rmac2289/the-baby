@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { HStack, Text, Center, Box, Pressable, Image } from "native-base";
+import {
+  HStack,
+  Text,
+  Center,
+  Box,
+  Pressable,
+  Image,
+  VStack,
+} from "native-base";
 import { StyleSheet, View, Dimensions } from "react-native";
 import Icon from "./Icon";
 import { useNavigation } from "@react-navigation/native";
@@ -47,20 +55,13 @@ export default function ButtonGrid({ baby }) {
 
   const navigation = useNavigation();
   return (
-    <View style={styles.parentContainer}>
+    <VStack style={styles.parentContainer}>
       <LinearGradient
-        colors={[indigo[50], indigo[900]]}
-        locations={[0.3, 0.35]}
+        colors={["#b45309", "#fefce8"]}
+        locations={[0.25, 0.25]}
         style={styles.background}
       />
-      <HStack
-        shadow={4}
-        bg="transparent"
-        padding={4}
-        flexDir="row"
-        justifyContent="space-between"
-        w="100%"
-      >
+      <HStack bg="amber.700" padding={1} w="100%" marginTop={5} space={1}>
         <HomeImage />
         <Date />
       </HStack>
@@ -71,16 +72,15 @@ export default function ButtonGrid({ baby }) {
               key={icon.route}
               style={styles.button}
               onPress={() => navigation.navigate(icon.route)}
-              bg={icon.bg}
+              bg="indigo.900"
               shadow={6}
               justifyContent="center"
               alignItems="center"
               rounded="full"
-              opacity={0.9}
             >
               <Center marginTop="1" h="100%" w="75" justifyContent="center">
                 <Icon uri={icon.uri} route={icon.route} />
-                <Text fontWeight="600" marginTop="1" color="indigo.50">
+                <Text fontWeight="600" marginTop="1" color="white">
                   {icon.route}
                 </Text>
               </Center>
@@ -110,7 +110,7 @@ export default function ButtonGrid({ baby }) {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-    </View>
+    </VStack>
   );
 }
 
@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
     height: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
-    margin: 5,
   },
   parentContainer: {
     width: "100%",
@@ -143,5 +142,6 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     position: "absolute",
+    opacity: 0.95,
   },
 });

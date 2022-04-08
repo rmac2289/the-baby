@@ -2,14 +2,13 @@ import React, { useEffect, useContext } from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import { Button, Text } from "native-base";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet, View } from "react-native";
 import { AuthContext } from "../context/GlobalContext";
 import Icon from "../components/Icon";
 
 WebBrowser.maybeCompleteAuthSession();
 
-export default function AuthTest() {
+export default function GoogleLogin() {
   const [isAuthenticated, setIsAuthenticated] = useContext(AuthContext);
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:

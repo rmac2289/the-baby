@@ -2,10 +2,10 @@ import React, { useState, useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { AuthContext } from "../context/GlobalContext";
 import { Text, Box, Center, Divider, VStack, Pressable } from "native-base";
-import AuthTest from "./AuthTest";
+import GoogleLogin from "../components/GoogleLogin";
 import { Ionicons } from "@expo/vector-icons";
 import AuthHelpPopup from "../components/AuthHelpPopup";
-import * as AppleAuthentication from "expo-apple-authentication";
+import AppleLogin from "../components/AppleLogin";
 import Logo from "../components/Logo";
 export default function AuthPrompt() {
   const [isAuthenticated, setIsAuthenticated] = useContext(AuthContext);
@@ -66,39 +66,11 @@ export default function AuthPrompt() {
           </Text>
           <Divider my={1} bg="indigo.900" opacity={0.25} />
           <Center w="100%">
-            <AuthTest
+            <GoogleLogin
               isAuthenticated={isAuthenticated}
               authenticateUser={authenticateUser}
             />
-            <Center w="100%" shadow={6}>
-              <AppleAuthentication.AppleAuthenticationButton
-                style={styles.button}
-                buttonType={
-                  AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN
-                }
-                buttonStyle={
-                  AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
-                }
-                cornerRadius={5}
-                onPress={async () => {
-                  try {
-                    const credential = await AppleAuthentication.signInAsync({
-                      requestedScopes: [
-                        AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
-                        AppleAuthentication.AppleAuthenticationScope.EMAIL,
-                      ],
-                    });
-                    // signed in
-                  } catch (e) {
-                    if (e.code === "ERR_CANCELED") {
-                      // handle that the user canceled the sign-in flow
-                    } else {
-                      // handle other errors
-                    }
-                  }
-                }}
-              />
-            </Center>
+            <AppleLogin />
           </Center>
         </Box>
       </VStack>
