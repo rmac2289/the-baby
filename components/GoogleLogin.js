@@ -4,7 +4,7 @@ import * as Google from "expo-auth-session/providers/google";
 import { Button, Text } from "native-base";
 import { StyleSheet, View } from "react-native";
 import { AuthContext } from "../context/GlobalContext";
-import Icon from "../components/Icon";
+import Icon from "./Icon";
 
 WebBrowser.maybeCompleteAuthSession();
 

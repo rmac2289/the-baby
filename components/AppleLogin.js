@@ -22,7 +22,7 @@ export default function AuthPrompt() {
                 AppleAuthentication.AppleAuthenticationScope.EMAIL,
               ],
             });
-            // signed in
+            console.log(credential);
             setIsAuthenticated(true);
           } catch (e) {
             if (e.code === "ERR_CANCELED") {

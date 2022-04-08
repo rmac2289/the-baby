@@ -9,6 +9,7 @@ import {
   Breastfeed,
   Bottle,
 } from "./screens/ActivityScreens";
+import { CurrentScreen } from "./screens/ActivityScreens";
 import Sleep from "./screens/Sleep";
 import { GlobalContext, AuthContext } from "./context/GlobalContext";
 import { indigo } from "./utils/cssVars";
@@ -43,9 +44,9 @@ export default function App() {
       fontSize: 24,
     },
     headerShadowVisible: false,
-    headerShown: false,
     animation: "simple_push",
     headerTitle: () => <Title data={data} />,
+    headerShown: false,
   };
 
   return fontLoaded ? (
@@ -61,12 +62,12 @@ export default function App() {
       ) : (
         <>
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Bottle" component={Bottle} />
-          <Stack.Screen name="Medicine" component={Medicine} />
+          <Stack.Screen name="Activity" component={CurrentScreen} />
+          {/* <Stack.Screen name="Medicine" component={Medicine} />
           <Stack.Screen name="Pump" component={Pump} />
           <Stack.Screen name="Breastfeed" component={Breastfeed} />
           <Stack.Screen name="Diaper" component={Diaper} />
-          <Stack.Screen name="Sleep" component={Sleep} />
+          <Stack.Screen name="Sleep" component={Sleep} /> */}
         </>
       )}
     </Stack.Navigator>

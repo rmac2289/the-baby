@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   HStack,
   Text,
@@ -7,6 +7,7 @@ import {
   Pressable,
   Image,
   VStack,
+  Stagger,
 } from "native-base";
 import { StyleSheet, View, Dimensions } from "react-native";
 import Icon from "./Icon";
@@ -52,8 +53,8 @@ const icons = [
 
 export default function ButtonGrid({ baby }) {
   const [modalVisible, setModalVisible] = useState(false);
-
   const navigation = useNavigation();
+
   return (
     <VStack style={styles.parentContainer}>
       <LinearGradient
@@ -66,27 +67,65 @@ export default function ButtonGrid({ baby }) {
         <Date />
       </HStack>
       <Box shadow={6} style={styles.container}>
-        {icons.map((icon, index) => {
-          return (
-            <Pressable
-              key={icon.route}
-              style={styles.button}
-              onPress={() => navigation.navigate(icon.route)}
-              bg="indigo.900"
-              shadow={6}
-              justifyContent="center"
-              alignItems="center"
-              rounded="full"
-            >
-              <Center marginTop="1" h="100%" w="75" justifyContent="center">
-                <Icon uri={icon.uri} route={icon.route} />
-                <Text fontWeight="600" marginTop="1" color="white">
-                  {icon.route}
-                </Text>
-              </Center>
-            </Pressable>
-          );
-        })}
+        <Stagger
+          visible={true}
+          initial={{
+            opacity: 0,
+            scale: 0,
+            translateY: 34,
+          }}
+          animate={{
+            translateY: 0,
+            scale: 1,
+            opacity: 1,
+            transition: {
+              type: "spring",
+              mass: 0.8,
+              stagger: {
+                offset: 30,
+                reverse: false,
+              },
+            },
+          }}
+          exit={{
+            translateY: 34,
+            scale: 0.5,
+            opacity: 0,
+            transition: {
+              duration: 100,
+              stagger: {
+                offset: 30,
+                reverse: true,
+              },
+            },
+          }}
+        >
+          {icons.map((icon, index) => {
+            return (
+              <Pressable
+                key={icon.route}
+                style={styles.button}
+                onPress={() =>
+                  navigation.navigate("Activity", {
+                    screenToRender: icon.route,
+                  })
+                }
+                bg="indigo.900"
+                shadow={6}
+                justifyContent="center"
+                alignItems="center"
+                rounded="full"
+              >
+                <Center marginTop="1" h="100%" w="75" justifyContent="center">
+                  <Icon uri={icon.uri} route={icon.route} />
+                  <Text fontWeight="600" marginTop="1" color="white">
+                    {icon.route}
+                  </Text>
+                </Center>
+              </Pressable>
+            );
+          })}
+        </Stagger>
         <Pressable
           onPress={() => setModalVisible(true)}
           style={styles.button}
